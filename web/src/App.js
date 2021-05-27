@@ -1,33 +1,20 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import theme from 'styles/theme';
-import GlobalStyle from 'styles/GlobalStyle';
-import { centerFlex } from 'styles/mixins';
+import { routes } from 'routes';
 
-const Wrapper = styled.div`
-  background-color: #1d1c29;
-  color: #ccc;
-  height: 100vh;
-
-  ${centerFlex}
-`;
+import AudioPlayerPage from 'pages/AudioPlayerPage';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Wrapper className='App'>
-        <header className='App-header'>
-          <p>
-            Edit
-            <code> src/App.js </code>
-            and save to reload.
-          </p>
-          MEditate
-        </header>
-      </Wrapper>
-    </ThemeProvider>
+    <div className='App'>
+      <BrowserRouter>
+        <header className='App-header'>Welcome! MEditate</header>
+        <Switch>
+          <Route exact path={routes.audioPlayer} component={AudioPlayerPage} />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 
