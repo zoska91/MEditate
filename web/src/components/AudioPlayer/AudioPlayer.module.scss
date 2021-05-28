@@ -1,3 +1,8 @@
-.App {
-  background-color: red;
+.wrapper {
+  audio::-webkit-media-controls-mute-button {
+    display: none !important;
+  }
+  audio::-webkit-media-controls-volume-slider {
+    display: none !important;
+  }
 }
