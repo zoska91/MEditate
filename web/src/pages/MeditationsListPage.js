@@ -2,6 +2,8 @@ import React from 'react';
 
 import TitlePage from 'components/atoms/TitlePage';
 import SingleMeditation from 'components/MeditationList/SingleMeditation';
+import MainWrapper from 'components/atoms/MainWrapper';
+import AddMeditation from 'components/MeditationList/AddMeditation';
 
 const dummyData = [
   {
@@ -24,10 +26,11 @@ const MeditationsListPage = () => {
   ));
 
   return (
-    <>
+    <MainWrapper>
       <TitlePage title='Moje medytacje' />
       {meditationsListRender}
-    </>
+      <AddMeditation />
+    </MainWrapper>
   );
 };
 

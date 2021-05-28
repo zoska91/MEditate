@@ -1,0 +1,10 @@
+@import 'styles/theme';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  color: $primary-color;
+  font-size: 22px;
+  line-height: 27px;
+  margin-left: 160px;
+}

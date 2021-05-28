@@ -1,0 +1,14 @@
+@import 'styles/theme';
+
+.wrapper {
+  background-color: $bg-color;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.buttonWrapper {
+  transform: rotate(-180deg);
+  position: absolute;
+  left: 70px;
+  top: 50px;
+}
