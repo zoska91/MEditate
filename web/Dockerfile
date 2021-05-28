@@ -1,4 +1,4 @@
-FROM node:12.18.2-buster
+FROM nikolaik/python-nodejs:latest
 
 WORKDIR /opt/app
 

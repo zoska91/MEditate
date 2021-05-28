@@ -27,8 +27,8 @@ services:
             - PGDATABASE=postgres
             - PGUSER=postgres
             - PGHOST=meditateapp-postgres
-        volumes: 
-            - /opt/app/node_modules/
+        # volumes: 
+        #     - /opt/app/node_modules/
     meditateapp-frontend:
         image: meditate-app/meditateapp_frontend
         build:
@@ -36,5 +36,5 @@ services:
             context: ./web
         depends_on:
             - meditateapp-backend
-        volumes: 
-            - /opt/app/node_modules/
+        # volumes: 
+        #     - /opt/app/node_modules/
