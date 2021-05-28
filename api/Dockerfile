@@ -1,4 +1,4 @@
-FROM node:12.18.2-buster
+FROM node:16-alpine
 
 WORKDIR /opt/app
 
