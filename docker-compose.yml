@@ -1,0 +1,40 @@
+version: "3"
+services:
+    meditateapp-postgres:
+        image: 'postgres:alpine'
+        environment:
+            - POSTGRES_PASSWORD=devops
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+        # volumes:
+        #     - ./pgdata:/var/lib/postgresql/data
+    meditateapp-nginx:
+        restart: always
+        build:
+            dockerfile: Dockerfile
+            context: ./nginx
+        ports:
+            - '8080:80'
+    meditateapp-backend:
+        image: meditate-app/meditateapp_backend
+        build:
+            dockerfile: Dockerfile
+            context: ./api
+        depends_on:
+            - meditateapp-postgres
+        environment:
+            - PGPASSWORD=devops
+            - PGDATABASE=postgres
+            - PGUSER=postgres
+            - PGHOST=meditateapp-postgres
+        # volumes:
+        #     - /opt/app/node_modules/
+    meditateapp-frontend:
+        image: meditate-app/meditateapp_frontend
+        build:
+            dockerfile: Dockerfile
+            context: ./web
+        depends_on:
+            - meditateapp-backend
+        # volumes:
+        #     - /opt/app/node_modules/
