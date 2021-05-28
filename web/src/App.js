@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from 'routes';
 
 import AudioPlayerPage from 'pages/AudioPlayerPage';
+import MeditationsListPage from 'pages/MeditationsListPage';
 
 function App() {
   return (
@@ -12,6 +13,11 @@ function App() {
         <header className='App-header'>Welcome! MEditate</header>
         <Switch>
           <Route exact path={routes.audioPlayer} component={AudioPlayerPage} />
+          <Route
+            exact
+            path={routes.meditationsList}
+            component={MeditationsListPage}
+          />
         </Switch>
       </BrowserRouter>
     </div>
