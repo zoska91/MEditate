@@ -1,21 +1,18 @@
 @import 'styles/theme';
 
-.wrapper {
-    z-index:1;
-}
-
-.container {
-    z-index:1;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+.menu {
     background-color: $bg-color;
-    width: 100%;
     opacity: 0.7;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    div {
-        cursor: pointer;
+}
+
+.menuLink {
+    color: white !important;
+    font-size: 22px !important;
+    padding: 20px;
+    margin-right: 25px;
+    &:last-of-type {
+        margin-right: 200px;
     }
 }
+
