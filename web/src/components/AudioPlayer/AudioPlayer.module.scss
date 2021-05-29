@@ -1,8 +1,28 @@
 .wrapper {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
   audio::-webkit-media-controls-mute-button {
     display: none !important;
   }
   audio::-webkit-media-controls-volume-slider {
     display: none !important;
   }
+}
+
+.buttonBackWrapper {
+  transform: rotate(-180deg);
+  position: absolute;
+  top: 40px;
+  left: 50px;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

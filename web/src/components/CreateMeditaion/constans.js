@@ -11,7 +11,7 @@ export const stepsTails = [
     { label: 'Cisza', value: 'Cisza', type: 'background' },
   ],
   [
-    { label: 'Wstęp', type: 'begining', icon: true },
+    { label: 'Wstęp', type: 'beginning', icon: true },
     { label: 'Prowadzenie', type: 'leading', icon: true },
     { label: 'Zakończenie', type: 'ending', icon: true },
     { label: 'Pomiń', type: 'no-voice' },
