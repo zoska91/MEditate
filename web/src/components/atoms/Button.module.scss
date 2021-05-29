@@ -1,0 +1,12 @@
+@import 'styles/theme';
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    fill: $primary-color;
+    font-size: 60px;
+  }
+}
