@@ -19,7 +19,7 @@ export const stepsTails = [
   [
     { label: 'Ania', value: 'Ania', type: 'voice', icon: true },
     { label: 'Wojtek', value: 'Wojtek', type: 'voice', icon: true },
-    { label: 'Pomiń', value: 'Brak', type: 'voice' },
+    { label: 'Karolina', value: 'Brak', type: 'voice', icon: true },
   ],
 ];
 

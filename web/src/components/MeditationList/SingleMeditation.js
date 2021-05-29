@@ -12,14 +12,11 @@ import { useHistory } from 'react-router';
 
 const images = [Img1, Img2, Img3];
 
-const SingleMeditation = ({ data }) => {
+const SingleMeditation = ({ data, index }) => {
   const history = useHistory();
   return (
     <div className={style.wrapper}>
-      <img
-        src={images[Math.floor(Math.random() * images.length)]}
-        className={style.image}
-      />
+      <img src={images[index]} className={style.image} />
       <div className={style.desc}>
         <h2>{data.title}</h2>
         <p className={style.elements}>

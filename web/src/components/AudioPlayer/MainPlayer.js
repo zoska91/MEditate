@@ -29,8 +29,8 @@ const SinglePlayer = ({
       onSeeked={e => handleSeek(e.target.currentTime)}
       onPlay={() => handlePlay(true)}
       onPause={() => handlePlay(false)}
-      volume={0.2}
-      style={{ width: '100%' }}
+      volume={0.4}
+      style={{ width: '100%', marginTop: '40vh' }}
     />
   );
 };
