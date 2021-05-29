@@ -31,7 +31,7 @@ const SingleMeditation = ({ data }) => {
           {data.ending && <span>Zakończenie</span>}
         </p>
       </div>
-      <div>
+      <div className={style.buttons}>
         <Button
           icon={
             <PlayCircleOutlineIcon

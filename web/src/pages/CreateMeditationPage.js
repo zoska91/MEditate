@@ -29,8 +29,8 @@ const reducer = (state, action) => {
       return { ...state, background: action.value };
     case 'voice':
       return { ...state, voice: action.value };
-    case 'begining':
-      return { ...state, begining: !state.begining };
+    case 'beginning':
+      return { ...state, beginning: !state.beginning };
     case 'leading':
       return { ...state, leading: !state.leading };
     case 'ending':
@@ -62,9 +62,9 @@ const CreateMeditationPage = () => {
 
   const submit = async () => {
     try {
-      console.log(JSON.stringify(meditationDetails));
-      const { data } = await api.createMeditation(meditationDetails);
-      history.push(data.id);
+      const data = await api.createMeditation(meditationDetails);
+      console.log(data);
+      history.push(data.status.id);
     } catch (e) {
       console.error(e);
       toast.error(

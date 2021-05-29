@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+import { api } from 'API';
+
 import TitlePage from 'components/atoms/TitlePage';
 import SingleMeditation from 'components/MeditationList/SingleMeditation';
 import MainWrapper from 'components/atoms/MainWrapper';
 import AddMeditation from 'components/MeditationList/AddMeditation';
-import { api } from 'API';
+import Indicator from 'components/atoms/Indicator';
 
 const MeditationsListPage = () => {
   const [meditationsList, setMeditationsList] = useState([]);
@@ -24,7 +26,7 @@ const MeditationsListPage = () => {
   return (
     <MainWrapper>
       <TitlePage title='Moje medytacje' />
-      {meditationsListRender}
+      {!meditationsList.length ? <Indicator /> : meditationsListRender}
       <AddMeditation />
     </MainWrapper>
   );
