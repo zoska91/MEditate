@@ -4,9 +4,14 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: 0.5s;
 
   svg {
     fill: $primary;
     font-size: 60px;
+  }
+
+  &:hover {
+    transform: rotate(-360deg);
   }
 }

@@ -9,29 +9,33 @@ import { routes } from 'routes';
 
 import AudioPlayerPage from 'pages/AudioPlayerPage';
 import MeditationsListPage from 'pages/MeditationsListPage';
+import HomePage from 'pages/HomePage';
+import MainPage from 'pages/MainPage';
 import Layout from 'Layout/Layout';
 import CreateMeditationPage from 'pages/CreateMeditationPage';
 
 function App() {
   return (
-    <Layout>
-      <BrowserRouter>
-        <Switch>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={MainPage} />
+        <Layout>
           <Route exact path={routes.audioPlayer} component={AudioPlayerPage} />
           <Route
             exact
             path={routes.meditationsList}
             component={MeditationsListPage}
           />
+          <Route exact path={routes.homePage} component={HomePage} />
           <Route
             exact
             path={routes.createMeditation}
             component={CreateMeditationPage}
           />
-        </Switch>
-      </BrowserRouter>
-      <ToastContainer />
-    </Layout>
+          <ToastContainer />
+        </Layout>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
