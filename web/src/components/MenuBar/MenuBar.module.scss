@@ -1,12 +1,21 @@
 @import 'styles/theme';
 
 .wrapper {
-    width: 100%;
-    box-shadow: -2px 5px 9px $box-shadow-color;
+    z-index:1;
 }
 
 .container {
-    width: 80%;
+    z-index:1;
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
+    background-color: $bg-color;
+    width: 100%;
+    opacity: 0.7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    div {
+        cursor: pointer;
+    }
 }
