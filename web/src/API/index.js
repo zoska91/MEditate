@@ -12,6 +12,6 @@ export const api = {
 
   createMeditation: body => {
     const params = qs.stringify(body, { arrayFormat: 'repeat' });
-    sendRequest.get(`/postMeditationObject?${params}`);
+    return sendRequest.get(`/postMeditationObject?${params}`);
   },
 };
