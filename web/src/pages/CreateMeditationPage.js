@@ -1,5 +1,10 @@
 import React, { useReducer, useState } from 'react';
+import { useHistory } from 'react-router';
+import style from 'components/CreateMeditaion/CreateMeditation.module.scss';
 
+import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
+
+import Button from 'components/atoms/Button';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -7,23 +12,29 @@ import StepLabel from '@material-ui/core/StepLabel';
 import MainWrapper from 'components/atoms/MainWrapper';
 import TitlePage from 'components/atoms/TitlePage';
 import MeditationName from 'components/CreateMeditaion/MeditationName';
+import SingleTail from 'components/CreateMeditaion/SingleTail';
+import TailsWrapper from 'components/CreateMeditaion/TailsWrapper';
+
+import { toast } from 'react-toastify';
+import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
+import { api } from 'API';
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'name':
-      return { ...state, name: action.value };
+    case 'title':
+      return { ...state, title: action.value };
     case 'time':
       return { ...state, time: +action.value };
     case 'background':
       return { ...state, background: action.value };
     case 'voice':
       return { ...state, voice: action.value };
-    case 'ending':
-      return { ...state, ending: false };
     case 'begining':
-      return { ...state, begining: false };
+      return { ...state, begining: !state.begining };
     case 'leading':
-      return { ...state, leading: false };
+      return { ...state, leading: !state.leading };
+    case 'ending':
+      return { ...state, ending: !state.ending };
 
     default:
       throw new Error();
@@ -31,48 +42,17 @@ const reducer = (state, action) => {
 };
 
 const initialState = {
-  name: '',
+  title: '',
   time: 0,
   background: '',
   voice: '',
-  elements: [],
+  begining: false,
+  leading: false,
+  ending: false,
 };
 
-const steps = ['Czas', 'Dwięk', 'Głos lektora', 'Elementy'];
-const stepsTails = [
-  [
-    { label: '4 minuty', value: 4, type: 'time' },
-    { label: '20 minut', value: 20, type: 'time' },
-    { label: '40 minut', value: 40, type: 'time' },
-  ],
-  [
-    { label: 'Las', value: 'Dzungla', type: 'background' },
-    { label: 'Fale', value: 'Fale', type: 'background' },
-    { label: 'Cisza', value: 'Cisza', type: 'background' },
-  ],
-  [
-    { label: 'Ania', value: 'Ania', type: 'voice' },
-    { label: 'Wojtek', value: 'Wojtek', type: 'voice' },
-    { label: 'Brak', value: 'Brak', type: 'voice' },
-  ],
-  [
-    { label: 'Wstęp', value: 'Ania', type: 'ending' },
-    { label: 'Prowadzenie', value: 'Wojtek', type: 'begining' },
-    { label: 'Zakończenie', value: 'Brak', type: 'leading' },
-    { label: 'Brak', value: 'Brak', type: null },
-  ],
-];
-
-const titles = [
-  'Rozpocznij od wybrania czasu trwania:',
-  `Następnie dobierz (lub nie!)
-  dźwięk towarzyszący:`,
-  `Wybierz głos, który poprowadzi
-  Cię  przez medytację:`,
-  'Wybierz elementy prowadzenia medytacji',
-];
-
 const CreateMeditationPage = () => {
+  const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
 
   const [meditationDetails, setMeditationDetails] = useReducer(
@@ -80,30 +60,90 @@ const CreateMeditationPage = () => {
     initialState
   );
 
-  console.log(meditationDetails);
+  const submit = async () => {
+    try {
+      console.log(JSON.stringify(meditationDetails));
+      const { data } = await api.createMeditation(meditationDetails);
+      history.push(data.id);
+    } catch (e) {
+      console.error(e);
+      toast.error(
+        'Coś poszło nie tak! Spróbuj ponownie lub skontaktuj się z dostawcą oprogramowania'
+      );
+    }
+  };
 
   const setValue = (value, type) => {
-    console.log(value);
+    if (type === 'no-voice') {
+      submit();
+      return;
+    }
 
     setMeditationDetails({ type, value });
-    setActiveStep(prev => prev + 1);
+
+    if (activeStep === steps.length - 1) {
+      submit();
+      return;
+    }
+
+    if (type && type !== 'ending' && type !== 'begining' && type !== 'leading')
+      setActiveStep(prev => prev + 1);
   };
 
   return (
     <MainWrapper>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      {activeStep !== 0 && (
+        <div className={style.buttonBackWrapper}>
+          <Button
+            icon={<PlayCircleOutlineRoundedIcon />}
+            onClick={() => setActiveStep(prev => prev - 1)}
+          />
+        </div>
+      )}
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        style={{
+          backgroundColor: 'transparent',
+          marginBottom: '100px',
+          transform: 'scale(1.2)',
+        }}
+      >
         {steps.map(label => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel>
+              <span className={style.stepLabel}>{label}</span>
+            </StepLabel>
           </Step>
         ))}
       </Stepper>
 
-      <TitlePage title={titles[activeStep]} />
-      <MeditationName
+      <TitlePage title={titles[activeStep]} center />
+
+      {/* <MeditationName
         meditationDetails={meditationDetails}
         setMeditationDetails={setMeditationDetails}
-      />
+      /> */}
+
+      <TailsWrapper>
+        {stepsTails[activeStep].map(tail => (
+          <SingleTail
+            key={tail.label}
+            setValue={setValue}
+            checked={meditationDetails[tail.type] === true ? true : false}
+            {...tail}
+          />
+        ))}
+      </TailsWrapper>
+
+      {activeStep === 2 && (
+        <div className={style.buttonNextWrapper}>
+          <Button
+            icon={<PlayCircleOutlineRoundedIcon />}
+            onClick={() => setActiveStep(prev => prev + 1)}
+          />
+        </div>
+      )}
     </MainWrapper>
   );
 };

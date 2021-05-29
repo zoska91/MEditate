@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 
 export const sendRequest = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -6,13 +7,11 @@ export const sendRequest = axios.create({
 });
 
 export const api = {
-  login: body => sendRequest.post('/auth/login', body),
+  getSingleMeditaion: id => sendRequest.get(`/getMeditationObject?id=${id}`),
+  getMyMeditaions: () => sendRequest.get('/getMeditationObjectList'),
+
+  createMeditation: body => {
+    const params = qs.stringify(body, { arrayFormat: 'repeat' });
+    sendRequest.get(`/postMeditationObject?${params}`);
+  },
 };
-
-/*
-example using:
-
-  const { data } = await api.login(loginData);
- console.log(data)
-
-*/

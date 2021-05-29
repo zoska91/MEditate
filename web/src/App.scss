@@ -1,3 +1,5 @@
+@import 'styles/theme';
+
 *,
 *:before,
 *:after {
@@ -15,4 +17,14 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
+}
+
+//material-ui styles
+.MuiStepIcon-root {
+  color: #c4c4c4 !important;
+}
+
+.MuiStepIcon-root.MuiStepIcon-completed,
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: $dark-accent !important;
 }

@@ -1,27 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import TitlePage from 'components/atoms/TitlePage';
 import SingleMeditation from 'components/MeditationList/SingleMeditation';
 import MainWrapper from 'components/atoms/MainWrapper';
 import AddMeditation from 'components/MeditationList/AddMeditation';
-
-const dummyData = [
-  {
-    id: 1,
-    img: 'https://via.placeholder.com/150',
-    title: 'Pobudka',
-    elements: ['4 min', 'Anna', 'Muzyka relaksacyjna', 'Wstęp', 'Zakończenie'],
-  },
-  {
-    id: 2,
-    img: 'https://via.placeholder.com/150',
-    title: 'Pobudka',
-    elements: ['4 min', 'Anna', 'Muzyka relaksacyjna', 'Wstęp', 'Zakończenie'],
-  },
-];
+import { api } from 'API';
 
 const MeditationsListPage = () => {
-  const meditationsListRender = dummyData.map(med => (
+  const [meditationsList, setMeditationsList] = useState([]);
+
+  useEffect(() => {
+    const getList = async () => {
+      const { data } = await api.getMyMeditaions();
+      console.log(data);
+      setMeditationsList(data.objects);
+    };
+    getList();
+  }, []);
+
+  const meditationsListRender = meditationsList.map(med => (
     <SingleMeditation key={med.id} data={med} />
   ));
 

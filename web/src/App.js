@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './App.scss';
 
@@ -28,6 +30,7 @@ function App() {
           />
         </Switch>
       </BrowserRouter>
+      <ToastContainer />
     </Layout>
   );
 }

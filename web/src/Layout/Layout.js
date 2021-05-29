@@ -14,9 +14,9 @@ const Layout = ({ children }) => {
 
   return (
     <div className={style.wrapper}>
-      <div className={style.buttonWrapper}>
+      {/* <div className={style.buttonWrapper}>
         <Button icon={<PlayCircleOutlineRoundedIcon />} onClick={goBack} />
-      </div>
+      </div> */}
       {children}
     </div>
   );

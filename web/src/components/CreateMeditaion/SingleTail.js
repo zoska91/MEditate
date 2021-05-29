@@ -1,8 +1,17 @@
 import React from 'react';
 
-const SingleTail = ({ setValue, label, value, type }) => {
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import style from './CreateMeditation.module.scss';
+
+const SingleTail = ({ setValue, label, value, type, checked, icon }) => {
   return (
-    <button type='submit' onClick={() => setValue(value, type)}>
+    <button
+      type='submit'
+      className={style.singleTail}
+      onClick={() => setValue(value, type)}
+      style={{ border: checked ? '7px solid #46949c' : null }}
+    >
+      {icon && <VolumeUpIcon />}
       {label}
     </button>
   );
