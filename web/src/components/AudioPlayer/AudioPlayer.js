@@ -54,14 +54,18 @@ const AudioPlayer = () => {
             handleSeek={handleSeek}
             audioBackground={audioData.background}
           />
-          <audio id='startAudio' constrols>
-            <source src={startAudioMp3} type='audio/mpeg' />
-            Your browser does not support the audio element.
-          </audio>
-          <audio id='endAudio' constrols>
-            <source src={endAudioMp3} type='audio/mpeg' />
-            Your browser does not support the audio element.
-          </audio>
+          {audioData.beginning && (
+            <audio id='startAudio' constrols>
+              <source src={startAudioMp3} type='audio/mpeg' />
+              Your browser does not support the audio element.
+            </audio>
+          )}
+          {audioData.beginning && (
+            <audio id='endAudio' constrols>
+              <source src={endAudioMp3} type='audio/mpeg' />
+              Your browser does not support the audio element.
+            </audio>
+          )}
         </div>
       )}
     </>

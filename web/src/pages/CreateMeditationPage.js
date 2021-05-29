@@ -18,6 +18,7 @@ import TailsWrapper from 'components/CreateMeditaion/TailsWrapper';
 import { toast } from 'react-toastify';
 import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
 import { api } from 'API';
+import Indicator from 'components/atoms/Indicator';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,37 +55,44 @@ const initialState = {
 const CreateMeditationPage = () => {
   const history = useHistory();
   const [activeStep, setActiveStep] = useState(0);
+  const [isLoading, setLoading] = useState(false);
 
   const [meditationDetails, setMeditationDetails] = useReducer(
     reducer,
     initialState
   );
 
-  const submit = async () => {
+  const submit = async (value, type) => {
+    setLoading(true);
     try {
-      const data = await api.createMeditation(meditationDetails);
-      console.log(data);
-      history.push(data.status.id);
+      const { data } = await api.createMeditation({
+        ...meditationDetails,
+        [type]: value,
+      });
+
+      history.push(`/audio-player/${data.status.id}`);
+      setLoading(false);
     } catch (e) {
       console.error(e);
       toast.error(
         'Coś poszło nie tak! Spróbuj ponownie lub skontaktuj się z dostawcą oprogramowania'
       );
+      setLoading(false);
     }
   };
 
   const setValue = (value, type) => {
     if (type === 'no-voice') {
-      submit();
+      submit(value, type);
+      return;
+    }
+
+    if (activeStep === steps.length - 1) {
+      submit(value, type);
       return;
     }
 
     setMeditationDetails({ type, value });
-
-    if (activeStep === steps.length - 1) {
-      submit();
-      return;
-    }
 
     if (type && type !== 'ending' && type !== 'begining' && type !== 'leading')
       setActiveStep(prev => prev + 1);
@@ -92,57 +100,63 @@ const CreateMeditationPage = () => {
 
   return (
     <MainWrapper>
-      {activeStep !== 0 && (
-        <div className={style.buttonBackWrapper}>
-          <Button
-            icon={<PlayCircleOutlineRoundedIcon />}
-            onClick={() => setActiveStep(prev => prev - 1)}
-          />
-        </div>
-      )}
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        style={{
-          backgroundColor: 'transparent',
-          marginBottom: '100px',
-          transform: 'scale(1.2)',
-        }}
-      >
-        {steps.map(label => (
-          <Step key={label}>
-            <StepLabel>
-              <span className={style.stepLabel}>{label}</span>
-            </StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      {isLoading ? (
+        <Indicator />
+      ) : (
+        <>
+          {activeStep !== 0 && (
+            <div className={style.buttonBackWrapper}>
+              <Button
+                icon={<PlayCircleOutlineRoundedIcon />}
+                onClick={() => setActiveStep(prev => prev - 1)}
+              />
+            </div>
+          )}
+          <Stepper
+            activeStep={activeStep}
+            alternativeLabel
+            style={{
+              backgroundColor: 'transparent',
+              marginBottom: '100px',
+              transform: 'scale(1.2)',
+            }}
+          >
+            {steps.map(label => (
+              <Step key={label}>
+                <StepLabel>
+                  <span className={style.stepLabel}>{label}</span>
+                </StepLabel>
+              </Step>
+            ))}
+          </Stepper>
 
-      <TitlePage title={titles[activeStep]} center />
+          <TitlePage title={titles[activeStep]} center />
 
-      {/* <MeditationName
+          {/* <MeditationName
         meditationDetails={meditationDetails}
         setMeditationDetails={setMeditationDetails}
       /> */}
 
-      <TailsWrapper>
-        {stepsTails[activeStep].map(tail => (
-          <SingleTail
-            key={tail.label}
-            setValue={setValue}
-            checked={meditationDetails[tail.type] === true ? true : false}
-            {...tail}
-          />
-        ))}
-      </TailsWrapper>
+          <TailsWrapper>
+            {stepsTails[activeStep].map(tail => (
+              <SingleTail
+                key={tail.label}
+                setValue={setValue}
+                checked={meditationDetails[tail.type] === true ? true : false}
+                {...tail}
+              />
+            ))}
+          </TailsWrapper>
 
-      {activeStep === 2 && (
-        <div className={style.buttonNextWrapper}>
-          <Button
-            icon={<PlayCircleOutlineRoundedIcon />}
-            onClick={() => setActiveStep(prev => prev + 1)}
-          />
-        </div>
+          {activeStep === 2 && (
+            <div className={style.buttonNextWrapper}>
+              <Button
+                icon={<PlayCircleOutlineRoundedIcon />}
+                onClick={() => setActiveStep(prev => prev + 1)}
+              />
+            </div>
+          )}
+        </>
       )}
     </MainWrapper>
   );
