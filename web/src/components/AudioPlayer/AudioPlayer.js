@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
-import { Spinner } from 'react-activity';
 
 import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
 import { api } from 'API';
@@ -38,14 +37,14 @@ const AudioPlayer = () => {
         <Indicator />
       ) : (
         <div className={styles.wrapper}>
+          <div className={styles.img}>
+            <img src={MainImg} alt='bg' />
+          </div>
           <div className={styles.buttonBackWrapper}>
             <Button
               icon={<PlayCircleOutlineRoundedIcon />}
               onClick={() => history.goBack()}
             />
-          </div>
-          <div className={styles.img}>
-            <img src={MainImg} alt='bg' />
           </div>
           <MainPlayer
             currentTime={currentTime}
@@ -54,18 +53,18 @@ const AudioPlayer = () => {
             handleSeek={handleSeek}
             audioBackground={audioData.background}
           />
-          {audioData.beginning && (
-            <audio id='startAudio' constrols>
-              <source src={startAudioMp3} type='audio/mpeg' />
-              Your browser does not support the audio element.
-            </audio>
-          )}
-          {audioData.beginning && (
-            <audio id='endAudio' constrols>
-              <source src={endAudioMp3} type='audio/mpeg' />
-              Your browser does not support the audio element.
-            </audio>
-          )}
+          <audio id='startAudio'>
+            <source
+              src={startAudioMp3}
+              type='audio/mpeg'
+              muted={audioData.beginning ? true : false}
+            />
+            Your browser does not support the audio element.
+          </audio>
+          <audio id='endAudio' volume={audioData.ending ? 1 : false}>
+            <source src={endAudioMp3} type='audio/mpeg' />
+            Your browser does not support the audio element.
+          </audio>
         </div>
       )}
     </>

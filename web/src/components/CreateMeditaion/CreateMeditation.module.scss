@@ -19,6 +19,10 @@
   display: flex;
   align-items: center;
 
+  &.checked {
+    background-color: $main-brand-color;
+  }
+
   svg {
     margin-right: 20px;
   }

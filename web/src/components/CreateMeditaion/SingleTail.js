@@ -7,9 +7,8 @@ const SingleTail = ({ setValue, label, value, type, checked, icon }) => {
   return (
     <button
       type='submit'
-      className={style.singleTail}
+      className={`${style.singleTail} ${checked ? style.checked : ''}`}
       onClick={() => setValue(value, type)}
-      style={{ border: checked ? '7px solid #46949c' : null }}
     >
       {icon && <VolumeUpIcon />}
       {label}
