@@ -5,23 +5,40 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import Button from 'components/atoms/Button';
 
+import Img1 from 'assets/images/circle.png';
+import Img2 from 'assets/images/circle2.png';
+import Img3 from 'assets/images/circle3.png';
+import { useHistory } from 'react-router';
+
+const images = [Img1, Img2, Img3];
+
 const SingleMeditation = ({ data }) => {
+  const history = useHistory();
   return (
     <div className={style.wrapper}>
-      <img src={data.img} className={style.image} />
+      <img
+        src={images[Math.floor(Math.random() * images.length)]}
+        className={style.image}
+      />
       <div className={style.desc}>
         <h2>{data.title}</h2>
         <p className={style.elements}>
-          {data.elements.map((el, i) => (
-            <span key={el}>
-              {el}
-              {i < data.elements.length - 1 && ', '}
-            </span>
-          ))}
+          <span>{data.time},</span>
+          <span>{data.voice},</span>
+          <span>{data.background},</span>
+          {data.begining && <span>Wstęp,</span>}
+          {data.leading && <span>Prowadzenie,</span>}
+          {data.ending && <span>Zakończenie</span>}
         </p>
       </div>
       <div>
-        <Button icon={<PlayCircleOutlineIcon />} />
+        <Button
+          icon={
+            <PlayCircleOutlineIcon
+              onClick={() => history.push(`/audio-player/${data.id}`)}
+            />
+          }
+        />
         <Button icon={<RemoveCircleOutlineIcon />} />
       </div>
     </div>

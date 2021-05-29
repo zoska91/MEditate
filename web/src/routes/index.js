@@ -1,6 +1,6 @@
 export const routes = {
-  // example
-  audioPlayer: '/audio-player',
+  audioPlayer: '/audio-player/:id',
   meditationsList: '/my-meditations',
-  homePage: '/home'
+  createMeditation: '/create-meditation',
+  homePage: '/home',
 };
