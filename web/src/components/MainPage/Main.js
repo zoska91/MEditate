@@ -18,21 +18,31 @@ const Main = () => {
                 <h1>Jak to działa?</h1>
                 <p>W MEditate, z dostępnych komponentów takich jak czas trwania, dźwięk w tle czy prowadzenie głosowe ułożysz medytację dopasowaną idealnie do tego, co lubisz najbardziej.</p>
                 <div className={style.firsStepDiv}>
-                    <div className={style.firsStepImage}></div>
-                    <div className={style.firsStepButton}>
+                    <div></div>
+                    <div>
                         <button>Krok pierwszy: wybierz czas</button>
                         <p>Masz przerwę na kawę? A może potrzebujesz dłuższej chwili odpoczynku? Wybierz czas, który najbardziej Ci odpowada.</p>
+                        <div></div>
                     </div>
-                </div>
-                <div></div>            
+                </div>              
             </Container>
             <Container fluid className={style.thirdContainer}>                
                 <div>
                     <button>Krok pierwszy: wybierz czas</button>
-                    <p>Masz przerwę na kawę? A może potrzebujesz dłuższej chwili odpoczynku? Wybierz czas, który najbardziej Ci odpowada.</p>
+                    <p>Lubisz jakąś medytację, ale relaksująca muzyka ciągle wybija Cię z rytmu? Wolałabyś szum, dźwięk fal albo deszczu? Wybierz dźwięk, który najlepiej Ci się kojarzy i sprawi, że się relaksujesz.</p>
                     <div></div>
                 </div>
                 <div></div>           
+            </Container>
+            <Container fluid className={style.forthContainer}>
+                <div>
+                    <div className={style.mainDiv}></div>
+                    <div>
+                        <button>Krok pierwszy: wybierz czas</button>
+                        <p>Masz przerwę na kawę? A może potrzebujesz dłuższej chwili odpoczynku? Wybierz czas, który najbardziej Ci odpowada.</p>
+                        <div className={style.arrow}></div>
+                    </div>
+                </div>              
             </Container>
             <Login/>
             <Reviews/>
