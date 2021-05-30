@@ -1,8 +1,10 @@
 import axios from 'axios';
 import qs from 'qs';
 
+const baseURL = 'http://meditate.us-e2.cloudhub.io/api';
+
 export const sendRequest = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL,
   headers: { 'Content-Type': 'application/json' },
 });
 
