@@ -1,4 +1,4 @@
-export const steps = ['Czas', 'Dwięk', 'Głos lektora', 'Elementy'];
+export const steps = ['Czas', 'Dwięk', 'Elementy', 'Głos lektora'];
 export const stepsTails = [
   [
     { label: '4 minuty', value: 4, type: 'time' },
@@ -27,7 +27,7 @@ export const titles = [
   'Rozpocznij od wybrania czasu trwania:',
   `Następnie dobierz (lub nie!)
   dźwięk towarzyszący:`,
+  'Wybierz elementy prowadzenia medytacji',
   `Wybierz głos, który poprowadzi
   Cię  przez medytację:`,
-  'Wybierz elementy prowadzenia medytacji',
 ];

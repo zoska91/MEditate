@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useAudioPlayer = time => {
+const useAudioPlayer = (time, audioData) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   const [isPlayStartAudio, setPlayStartAudio] = useState(false);
@@ -26,8 +26,8 @@ const useAudioPlayer = time => {
       setPlayStartAudio(true);
       setPlayEndAudio(true);
 
-      if (isStartAudioTime) startAudio.play();
-      if (isEndAudioTime) endAudio.play();
+      if (isStartAudioTime && audioData?.beginning) startAudio.play();
+      if (isEndAudioTime && audioData?.ending) endAudio.play();
     }
 
     if (startAudio && endAudio && !value) {
@@ -40,7 +40,7 @@ const useAudioPlayer = time => {
 
   const handleSeek = seekTime => {
     setCurrentTime(seekTime);
-    if (seekTime === 0 && isPlay) startAudio.play();
+    if (seekTime === 0 && isPlay && audioData?.beginning) startAudio.play();
 
     if (isStartAudioTime) {
       startAudio.currentTime = seekTime;
@@ -64,7 +64,13 @@ const useAudioPlayer = time => {
 
   useEffect(() => {
     //turn on begin part
-    if (startAudio && isPlay && !isPlayStartAudio && isStartAudioTime) {
+    if (
+      audioData?.beginning &&
+      startAudio &&
+      isPlay &&
+      !isPlayStartAudio &&
+      isStartAudioTime
+    ) {
       startAudio.play();
       setPlayStartAudio(true);
     }
@@ -76,7 +82,13 @@ const useAudioPlayer = time => {
     }
 
     //turn on ending part
-    if (endAudio && isPlay && !isPlayEndAudio && isEndAudioTime) {
+    if (
+      audioData?.ending &&
+      endAudio &&
+      isPlay &&
+      !isPlayEndAudio &&
+      isEndAudioTime
+    ) {
       endAudio.play();
       setPlayEndAudio(true);
     }

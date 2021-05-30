@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { api } from 'API';
 
+import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
+
 import TitlePage from 'components/atoms/TitlePage';
 import SingleMeditation from 'components/MeditationList/SingleMeditation';
 import MainWrapper from 'components/atoms/MainWrapper';
 import AddMeditation from 'components/MeditationList/AddMeditation';
 import Indicator from 'components/atoms/Indicator';
-
-const images = [];
+import Button from 'components/atoms/Button';
 
 const MeditationsListPage = () => {
   const [meditationsList, setMeditationsList] = useState([]);
@@ -27,6 +28,20 @@ const MeditationsListPage = () => {
 
   return (
     <MainWrapper>
+      <div
+        style={{
+          transform: 'rotate(-180deg)',
+          position: 'absolute',
+          top: '40px',
+          left: '50px',
+        }}
+      >
+        <Button
+          icon={<PlayCircleOutlineRoundedIcon />}
+          onClick={() => (history.goBack ? history?.goBack() : null)}
+        />
+      </div>
+
       <TitlePage title='Moje medytacje' />
       {!meditationsList.length ? <Indicator /> : meditationsListRender}
       <AddMeditation />

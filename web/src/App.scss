@@ -1,5 +1,5 @@
 @import 'styles/theme';
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
 *,
 *:before,
@@ -30,3 +30,6 @@ body {
   color: $dark-accent !important;
 }
 
+.MuiStepConnector-lineHorizontal {
+  border-top-width: 3px !important;
+}
