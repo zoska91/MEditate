@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 
 import { api } from 'API';
 
@@ -12,6 +13,7 @@ import Indicator from 'components/atoms/Indicator';
 import Button from 'components/atoms/Button';
 
 const MeditationsListPage = () => {
+  const history = useHistory();
   const [meditationsList, setMeditationsList] = useState([]);
 
   const meditationsListRender = meditationsList.map((med, i) => (
