@@ -60,12 +60,45 @@ const Main = () => {
             <div>
               <button>Krok trzeci: dobierz głos lektora</button>
               <p>
-                Masz przerwę na kawę? A może potrzebujesz dłuższej chwili
-                odpoczynku? Wybierz czas, który najbardziej Ci odpowada.
+                Wolisz jak medytację prowadzi głos kobiecy czy męski? A może nie lubisz prowadzonej medytacji? 
+                Wybierz opcję, kóra najlepiej pasuje do Twojej medytacji.
               </p>
               <div className={style.arrow}></div>
             </div>
           </div>
+        </Container>
+        <Container fluid className={style.fifthContainer}>
+          <div>
+            <button>Krok czwarty: wybierz ścieżkę dzwiękową</button>
+            <p>
+            Wolisz, żeby lektor przeprowadził Cię przez całą medytację, czy tylko wprowadził i zakończył?
+            </p>
+            <div></div>
+          </div>
+          <div></div>
+        </Container>
+        <Container fluid className={style.sixthContainer}>
+          <div>
+            <div className={style.mainDiv}></div>
+            <div>
+              <button>Krok piąty: ciesz się swoją medytacją</button>
+              <p>
+              Usiądź wygodnie i pozwól dopasowanej do siebie medytacji, 
+              przenieść się do obecnej chwiili.
+              </p>
+              <div className={style.arrow}></div>
+            </div>
+          </div>
+        </Container>
+        <Container fluid className={style.seventhContainer}>
+          <div>
+            <button>Krok szósty (ostatni!) : dodaj medytację do ulubionych</button>
+            <p>
+            Podobała Ci się medytacja? Dodaj ją do swoich medytacji, żeby móc z niej częściej korzystać.
+            </p>
+            <div></div>
+          </div>
+          <div></div>
         </Container>
         <Login />
         <Reviews />
