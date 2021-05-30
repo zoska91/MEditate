@@ -5,6 +5,10 @@
   background: $gradient;
   width: 100%;
 }
+.container {
+  max-width: 1366px;
+  margin: 0 auto;
+}
 
 .topImage {
   margin-top: -54%;
