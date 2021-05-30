@@ -12,14 +12,7 @@ const Layout = ({ children }) => {
     if (history) history.goBack();
   };
 
-  return (
-    <div className={style.wrapper}>
-      {/* <div className={style.buttonWrapper}>
-        <Button icon={<PlayCircleOutlineRoundedIcon />} onClick={goBack} />
-      </div> */}
-      {children}
-    </div>
-  );
+  return <div className={style.wrapper}>{children}</div>;
 };
 
 export default Layout;

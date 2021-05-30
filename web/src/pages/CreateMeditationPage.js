@@ -1,24 +1,28 @@
 import React, { useReducer, useState } from 'react';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import style from 'components/CreateMeditaion/CreateMeditation.module.scss';
 
 import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
-
-import Button from 'components/atoms/Button';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 
-import MainWrapper from 'components/atoms/MainWrapper';
+import Button from 'components/atoms/Button';
 import TitlePage from 'components/atoms/TitlePage';
-import MeditationName from 'components/CreateMeditaion/MeditationName';
 import SingleTail from 'components/CreateMeditaion/SingleTail';
 import TailsWrapper from 'components/CreateMeditaion/TailsWrapper';
-
-import { toast } from 'react-toastify';
-import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
-import { api } from 'API';
 import Indicator from 'components/atoms/Indicator';
+import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
+
+import { api } from 'API';
+
+import Img1 from 'assets/images/tlo-1.jpg';
+import Img2 from 'assets/images/tlo-2.png';
+import Img3 from 'assets/images/tlo-3.png';
+import Img4 from 'assets/images/tlo-4.png';
+
+const images = [Img1, Img2, Img3, Img4];
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -94,71 +98,73 @@ const CreateMeditationPage = () => {
 
     setMeditationDetails({ type, value });
 
-    if (type && type !== 'ending' && type !== 'begining' && type !== 'leading')
+    if (type && type !== 'ending' && type !== 'beginning' && type !== 'leading')
       setActiveStep(prev => prev + 1);
   };
 
   return (
-    <MainWrapper>
-      {isLoading ? (
-        <Indicator />
-      ) : (
-        <>
-          {activeStep !== 0 && (
+    <>
+      <div
+        className={style.wrapper}
+        style={{ backgroundImage: `url(${images[activeStep]})` }}
+      >
+        {isLoading ? (
+          <Indicator />
+        ) : (
+          <>
             <div className={style.buttonBackWrapper}>
               <Button
                 icon={<PlayCircleOutlineRoundedIcon />}
-                onClick={() => setActiveStep(prev => prev - 1)}
+                onClick={() => {
+                  if (activeStep === 0) history.goBack();
+                  else setActiveStep(prev => prev - 1);
+                }}
               />
             </div>
-          )}
-          <Stepper
-            activeStep={activeStep}
-            alternativeLabel
-            style={{
-              backgroundColor: 'transparent',
-              marginBottom: '100px',
-              transform: 'scale(1.2)',
-            }}
-          >
-            {steps.map(label => (
-              <Step key={label}>
-                <StepLabel>
-                  <span className={style.stepLabel}>{label}</span>
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
 
-          <TitlePage title={titles[activeStep]} center />
+            <Stepper
+              activeStep={activeStep}
+              alternativeLabel
+              style={{
+                backgroundColor: 'transparent',
+                marginBottom: '15vh',
+                transform: 'scale(1.2)',
+              }}
+            >
+              {steps.map(label => (
+                <Step key={label}>
+                  <StepLabel>
+                    <span className={style.stepLabel}>{label}</span>
+                  </StepLabel>
+                </Step>
+              ))}
+            </Stepper>
 
-          {/* <MeditationName
-        meditationDetails={meditationDetails}
-        setMeditationDetails={setMeditationDetails}
-      /> */}
+            <TitlePage title={titles[activeStep]} center />
 
-          <TailsWrapper>
-            {stepsTails[activeStep].map(tail => (
-              <SingleTail
-                key={tail.label}
-                setValue={setValue}
-                checked={meditationDetails[tail.type] === true ? true : false}
-                {...tail}
-              />
-            ))}
-          </TailsWrapper>
+            <TailsWrapper>
+              {stepsTails[activeStep].map(tail => (
+                <SingleTail
+                  key={tail.label}
+                  setValue={setValue}
+                  checked={meditationDetails[tail.type] === true ? true : false}
+                  {...tail}
+                />
+              ))}
+            </TailsWrapper>
 
-          {activeStep === 2 && (
-            <div className={style.buttonNextWrapper}>
-              <Button
-                icon={<PlayCircleOutlineRoundedIcon />}
-                onClick={() => setActiveStep(prev => prev + 1)}
-              />
-            </div>
-          )}
-        </>
-      )}
-    </MainWrapper>
+            {activeStep === 2 && (
+              <div className={style.buttonNextWrapper}>
+                <Button
+                  icon={<PlayCircleOutlineRoundedIcon />}
+                  onClick={() => setActiveStep(prev => prev + 1)}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

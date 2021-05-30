@@ -1,11 +1,12 @@
 .wrapper {
   // position: relative;
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
+  padding: 0 40px;
 
   audio::-webkit-media-controls-mute-button {
     display: none !important;
@@ -32,5 +33,6 @@
   img {
     min-height: 100vh;
     min-width: 100vw;
+    margin: 0;
   }
 }

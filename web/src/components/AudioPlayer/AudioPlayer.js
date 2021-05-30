@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 
+import styles from './AudioPlayer.module.scss';
+
 import PlayCircleOutlineRoundedIcon from '@material-ui/icons/PlayCircleOutlineRounded';
 import { api } from 'API';
 
-import styles from './AudioPlayer.module.scss';
 import MainPlayer from './MainPlayer';
 import useAudioPlayer from './useAudioPlayer';
 import MainImg from 'assets/images/player-img.png';
@@ -21,7 +22,7 @@ const AudioPlayer = () => {
   const [audioData, setAudioData] = useState(null);
 
   const { handlePlay, currentTime, setCurrentTime, handleSeek } =
-    useAudioPlayer(4 * 60);
+    useAudioPlayer(4 * 60, audioData);
 
   useEffect(() => {
     const getAudio = async () => {
@@ -33,40 +34,38 @@ const AudioPlayer = () => {
 
   return (
     <>
-      {!audioData ? (
-        <Indicator />
-      ) : (
-        <div className={styles.wrapper}>
-          <div className={styles.img}>
-            <img src={MainImg} alt='bg' />
-          </div>
-          <div className={styles.buttonBackWrapper}>
-            <Button
-              icon={<PlayCircleOutlineRoundedIcon />}
-              onClick={() => history.goBack()}
-            />
-          </div>
-          <MainPlayer
-            currentTime={currentTime}
-            setCurrentTime={setCurrentTime}
-            handlePlay={handlePlay}
-            handleSeek={handleSeek}
-            audioBackground={audioData.background}
-          />
-          <audio id='startAudio'>
-            <source
-              src={startAudioMp3}
-              type='audio/mpeg'
-              muted={audioData.beginning ? true : false}
-            />
-            Your browser does not support the audio element.
-          </audio>
-          <audio id='endAudio' volume={audioData.ending ? 1 : false}>
-            <source src={endAudioMp3} type='audio/mpeg' />
-            Your browser does not support the audio element.
-          </audio>
+      <div className={styles.wrapper}>
+        <div className={styles.img}>
+          <img src={MainImg} alt='bg' />
         </div>
-      )}
+        {!audioData ? (
+          <Indicator />
+        ) : (
+          <>
+            <div className={styles.buttonBackWrapper}>
+              <Button
+                icon={<PlayCircleOutlineRoundedIcon />}
+                onClick={() => history.goBack()}
+              />
+            </div>
+            <MainPlayer
+              currentTime={currentTime}
+              setCurrentTime={setCurrentTime}
+              handlePlay={handlePlay}
+              handleSeek={handleSeek}
+              audioBackground={audioData.background}
+            />
+            <audio id='startAudio'>
+              <source src={startAudioMp3} type='audio/mpeg' />
+              Your browser does not support the audio element.
+            </audio>
+            <audio id='endAudio'>
+              <source src={endAudioMp3} type='audio/mpeg' />
+              Your browser does not support the audio element.
+            </audio>
+          </>
+        )}
+      </div>
     </>
   );
 };
