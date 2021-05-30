@@ -15,14 +15,14 @@ import TailsWrapper from 'components/CreateMeditaion/TailsWrapper';
 import Indicator from 'components/atoms/Indicator';
 import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
 
+import Img1 from 'assets/img/tlo-1.jpg';
+import Img2 from 'assets/img/tlo-2.png';
+import Img3 from 'assets/img/tlo-3.png';
+import Img4 from 'assets/img/tlo-4.png';
+
 import { api } from 'API';
 
-const images = [
-  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366597/MEditate/tlo-1_nwy3lr.jpg',
-  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-2_dzzvit.png',
-  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-3_x8m4jo.png',
-  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-4_u1wmdz.png',
-];
+const images = [Img1, Img2, Img3, Img4];
 
 const reducer = (state, action) => {
   switch (action.type) {
