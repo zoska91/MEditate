@@ -1,3 +1,0 @@
-MEditate
-
-enjoy!
