@@ -12,8 +12,9 @@ const MenuBar = () => {
         src={logo}
         className={style.logo}
         alt='MEditate logo'
-        with='60'
+        width='60'
         height='60'
+        margin-top='0'
       />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
