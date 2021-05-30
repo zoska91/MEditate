@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, NavDropdown } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 import style from './MenuBar.module.scss';
 
 const MenuBar = () => {
@@ -18,8 +19,8 @@ const MenuBar = () => {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
-          <Nav.Link className={style.menuLink} href='/home'>
-            Moje Medytacje
+          <Nav.Link className={style.menuLink}>
+            <Link to='/home'>Moje Medytacje</Link>
           </Nav.Link>
           <Nav.Link className={style.menuLink} href='#memes'>
             Jak to działa?

@@ -13,7 +13,7 @@ const HomePage = () => {
       <div className={style.buttons}>
         <SingleButton
           label='Moje medytacje'
-          img='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367757/MEditate/my_lzu8bs.png'
+          img='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622378290/MEditate/moje-medytacje2-duze_xlbvuv.png'
           to='/my-meditations'
         />
         <SingleButton

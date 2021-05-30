@@ -5,6 +5,10 @@
   background: $gradient;
   width: 100%;
 }
+.container {
+  max-width: 1366px;
+  margin: 0 auto;
+}
 
 .topImage {
   margin-top: -54%;
@@ -74,16 +78,17 @@
   div:first-child {
     width: 40%;
     float: left;
-    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368370/MEditate/step1_ndxjfw.png');
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367254/MEditate/final-step1_e2vcjx.png');
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(-1.41deg);
-    height: 300px;
+    height: 500px;
   }
   div:nth-child(2) {
     width: 50%;
     float: left;
     padding: 40px;
+    height: 500px;
     button {
       border: none;
       padding: 8px 16px;
@@ -102,41 +107,239 @@
       margin-bottom: 20px;
       cursor: unset;
     }
-  }
-  div:nth-child(3) {
-    width: 100%;
-  }
-  div:nth-child(4) {
-    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368583/MEditate/Vector4_hjlrp2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 190px;
-    width: 150px;
-    margin-right: 40%;
-    float: right;
+    div:nth-child(3) {
+      background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368583/MEditate/Vector4_hjlrp2.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 190px;
+      width: 150px;
+      margin-left: 5%;
+    }
   }
 }
 
 .thirdContainer {
-  height: 706px;
+  height: 600px;
   div:first-child {
     height: 600px;
     width: 50%;
     float: left;
+    color: #ffffff;
+    button {
+      border: none;
+      padding: 8px 16px;
+      background: #EF813A;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      width: 400px;
+      height: 50px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      cursor: unset;
+    }
   }
   div:nth-child(2) {
     height: 600px;
     width: 50%;
     float: left;
-    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368370/MEditate/step1_ndxjfw.png');
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367255/MEditate/final-step2_omdabr.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
   div:nth-child(3) {
-    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368583/MEditate/Vector4_hjlrp2.png');
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368585/MEditate/Vector5_jpd02b.png');
     background-repeat: no-repeat;
     background-size: contain;
-    height: 190px;
-    width: 150px;
+    height: 230px;
+    width: 160px;
+    float: right;
+    margin-right: 10%;
+  }
+}
+
+.forthContainer {
+  color: #ffffff;
+  height: 625px;
+  padding: 50px;
+  .mainDiv {
+    float: left;
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368327/MEditate/final-step3_ywzbth.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(-1.41deg);
+    height: 500px;
+    width: 50%;
+  }
+  div:nth-child(2) {
+    width: 50%;
+    float: left;
+    padding: 40px;
+    height: 500px;
+    button {
+      border: none;
+      padding: 8px 16px;
+      background: #bf2c66;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      width: 345px;
+      height: 44px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      cursor: unset;
+    }
+    .arrow {
+      background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368583/MEditate/Vector4_hjlrp2.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 190px;
+      width: 150px;
+      margin-left: 5%;
+    }
+  }
+}
+
+.fifthContainer{
+  height: 600px;
+  div:first-child {
+    height: 600px;
+    width: 50%;
+    float: left;
+    color: #ffffff;
+    button {
+      border: none;
+      padding: 8px 16px;
+      background: #819496;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      width: 400px;
+      height: 50px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      cursor: unset;
+    }
+    p {
+      width: 70%;
+    }
+  }
+  div:nth-child(2) {
+    height: 600px;
+    width: 50%;
+    float: left;
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368329/MEditate/final-step4_rvwbu0.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  div:nth-child(3) {
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368585/MEditate/Vector5_jpd02b.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 230px;
+    width: 160px;
+    float: right;
+    margin-right: 10%;
+  }
+}
+
+.sixthContainer{
+  color: #ffffff;
+  height: 625px;
+  padding: 50px;
+  .mainDiv {
+    float: left;
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368331/MEditate/final-step5_xw8pfc.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(-1.41deg);
+    height: 500px;
+    width: 50%;
+  }
+  div:nth-child(2) {
+    width: 50%;
+    float: left;
+    padding: 40px;
+    height: 500px;
+    button {
+      border: none;
+      padding: 8px 16px;
+      background: #EF813A;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      width: 345px;
+      height: 44px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      cursor: unset;
+    }
+    .arrow {
+      background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622368583/MEditate/Vector4_hjlrp2.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 190px;
+      width: 150px;
+      margin-left: 5%;
+    }
+  }
+}
+
+.seventhContainer{
+  height: 600px;
+  div:first-child {
+    height: 600px;
+    width: 50%;
+    float: left;
+    color: #ffffff;
+    button {
+      border: none;
+      padding: 8px 16px;
+      background: #bf2c66;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;;
+      line-height: 27px;
+      text-align: center;
+      color: #ffffff;
+      width: 490px;
+      height: 50px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      cursor: unset;
+    }
+    p {
+      width: 70%;
+    }
+  }
+  div:nth-child(2) {
+    height: 600px;
+    width: 50%;
+    float: left;
+    background-image: url('https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367259/MEditate/final-step6_j2nsdr.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
