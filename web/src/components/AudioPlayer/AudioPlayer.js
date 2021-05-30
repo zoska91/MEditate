@@ -8,7 +8,6 @@ import { api } from 'API';
 
 import MainPlayer from './MainPlayer';
 import useAudioPlayer from './useAudioPlayer';
-import MainImg from 'assets/images/player-img.png';
 import Button from 'components/atoms/Button';
 
 import startAudioMp3 from 'assets/audio/startAudio.mp3';
@@ -36,7 +35,10 @@ const AudioPlayer = () => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.img}>
-          <img src={MainImg} alt='bg' />
+          <img
+            src='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/player-img_gknhno.png'
+            alt='bg'
+          />
         </div>
         {!audioData ? (
           <Indicator />

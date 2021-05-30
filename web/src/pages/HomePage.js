@@ -3,9 +3,6 @@ import style from 'components/HomePage/Home.module.scss';
 
 import SingleButton from 'components/HomePage/SingleButton';
 
-import My from 'assets/img/my.png';
-import New from 'assets/img/new.png';
-import Losowe from 'assets/img/losowa.png';
 import TitlePage from 'components/atoms/TitlePage';
 
 const HomePage = () => {
@@ -14,15 +11,19 @@ const HomePage = () => {
       <TitlePage center title='Czym dziś chcesz się zająć?' />
 
       <div className={style.buttons}>
-        <SingleButton label='Moje medytacje' img={My} to='/my-meditations' />
+        <SingleButton
+          label='Moje medytacje'
+          img='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367757/MEditate/my_lzu8bs.png'
+          to='/my-meditations'
+        />
         <SingleButton
           label='Nowa medytacja'
-          img={New}
+          img='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367758/MEditate/new_ufnchf.png'
           to='/create-meditation'
         />
         <SingleButton
           label='Losowa medytacja'
-          img={Losowe}
+          img='https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367259/MEditate/logo-meditate_odzawz.png'
           to='/audio-player/0005'
         />
       </div>

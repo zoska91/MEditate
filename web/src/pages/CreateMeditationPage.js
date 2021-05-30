@@ -17,12 +17,12 @@ import { steps, stepsTails, titles } from 'components/CreateMeditaion/constans';
 
 import { api } from 'API';
 
-import Img1 from 'assets/images/tlo-1.jpg';
-import Img2 from 'assets/images/tlo-2.png';
-import Img3 from 'assets/images/tlo-3.png';
-import Img4 from 'assets/images/tlo-4.png';
-
-const images = [Img1, Img2, Img3, Img4];
+const images = [
+  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366597/MEditate/tlo-1_nwy3lr.jpg',
+  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-2_dzzvit.png',
+  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-3_x8m4jo.png',
+  'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622366598/MEditate/tlo-4_u1wmdz.png',
+];
 
 const reducer = (state, action) => {
   switch (action.type) {

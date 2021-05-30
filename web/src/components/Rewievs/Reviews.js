@@ -1,8 +1,6 @@
 import React from 'react';
 import style from './Reviews.module.scss';
 import SingleReview from './SingleReview/SingleReview';
-import person1 from '../../assets/img/person1.png';
-import person2 from '../../assets/img/person2.png';
 
 const Reviews = () => {
   const reviewers = {
@@ -10,13 +8,13 @@ const Reviews = () => {
       desc: ',,Wszystkie dostępne na rynku aplikacje są przeładowane treścią. Świetne miejsce na skupienie się wyłączenie na medytacji “',
       name: 'Karolina Janowska',
       date: '9/11/2020',
-      img: person1,
+      img: 'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367760/MEditate/person1_nma741.png',
     },
     second: {
       desc: '“Stworzyłem swoją listę medytacji, teraz nie musze już, szukać”',
       name: 'Adrian Kowalczylk',
       date: '11/3/2021',
-      img: person2,
+      img: 'https://res.cloudinary.com/dgm1ulzgm/image/upload/v1622367761/MEditate/person2_fkq5vb.png',
     },
   };
   return (
